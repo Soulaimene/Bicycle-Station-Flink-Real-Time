@@ -9,7 +9,7 @@
     <a href="#Live-Demo">Live Demo</a> |
     <a href="#Installation-Guide">Installation Guide</a> |
     <a href="#Technologies">Technologies</a> |
-    <a href="#Deployment-Server">Deployment Server</a> |
+    
 
   </h4>
 </div>
