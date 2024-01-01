@@ -41,8 +41,7 @@ def create_sink():
     address STRING,
     status STRING,
     `position` MAP<STRING, DOUBLE>,
-    timestamps STRING,
-    PRIMARY KEY (address) NOT ENFORCED
+    timestamps STRING
     ) WITH (
     'connector' = 'elasticsearch-7',
     'hosts' = 'http://elasticsearch:9200',
