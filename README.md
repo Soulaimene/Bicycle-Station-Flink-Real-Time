@@ -6,9 +6,9 @@
 <div align="center">
   <h4>
     <a href="#Context">Context</a> |
-    <a href="#Technologies">Technologies and Architecture</a> |
+    <a href="#Technologies and Architecture">Technologies and Architecture</a> |
+    <a href="#Running the Application">Running the Application</a> |
     <a href="#Live-Demo">Live Demo</a> |
-    <a href="#Installation-Guide">Installation Guide</a> |
     
 
   </h4>
@@ -28,8 +28,63 @@ To retrieve real-time data on bicycle stations, this project utilizes the JCDeca
 
 The JCDecaux API allows you to access information about bike stations, available bikes, and more, enabling dynamic and up-to-date visualizations in the project's dashboard.
 
+## Technologies and Architecture
+Below is an architecture diagram illustrating the flow of data and the integration of technologies in this project:
 
-NOTE :  Make sure to get an api_key.
+![Architecture Diagram](./Readme_Images/bicycleArch.png)
 
-## Technologies 
+**Description:**
+1. **Data Ingestion:**
+   - Kafka (Version 3.3) is used to request real-time data from the JCDecaux API and produce it to a Kafka topic named 'bike.'
 
+2. **Data Processing:**
+   - PyFlink (Version 1.16.3) consumes data from the Kafka topic, processes it, and generates meaningful insights.
+
+3. **Data Storage:**
+   - Elasticsearch (Version 7.17) stores the processed data in an index named 'bike.'
+
+4. **Visualization:**
+   - Kibana is integrated with Elasticsearch for dynamic visualization of the processed data.
+
+This Dockerized architecture ensures seamless deployment and scalability, allowing for easy setup and management of all components in a containerized environment.
+
+## Running the Application
+### Running the Application
+
+1. **Prerequisites:**
+   - Ensure you have Docker installed on your machine.
+   - Obtain the necessary API key from JCDecaux for data retrieval.
+
+2. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/Soulaimene/Bicycle-Station-Flink-Real-Time.git
+   cd Bicycle-Station-Flink-Real-Time
+   ```
+3. **Build Docker Images and Run the Application:**
+   ```bash
+   docker-compose build
+   docker-compose up -d
+   ```
+Now all the required technologies are set up in Docker containers, eliminating the need for manual installation on your local machine.
+
+4. **Create Elasticsearch Index:**
+- Run the following command to create the Elasticsearch index:
+  ```
+  python elasticsearch_index.py
+  ```
+
+5. **Run the Kafka Producer:**
+- Start the Kafka producer to fetch data from JCDecaux API:
+  ```
+  python kafka_producer.py --api_key 'your-jcdecaux-api-key'
+  ```
+  
+6. **Access Kibana Dashboard:**
+- Open your browser and go to `http://localhost:5601` to access the Kibana dashboard.
+- All visualizations are preconfigured and will load automatically.
+
+7. **Stop the Application:**
+- To stop the application and free up resources, run:
+  ```
+  docker-compose down
+  ```
