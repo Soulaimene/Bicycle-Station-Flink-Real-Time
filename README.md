@@ -52,43 +52,43 @@ This Dockerized architecture ensures seamless deployment and scalability, allowi
 ### Running the Application
 
 1. **Prerequisites:**
-   - Ensure you have Docker installed on your machine.
-   - Obtain the necessary API key from JCDecaux for data retrieval.
+     - Ensure you have Docker installed on your machine.
+     - Obtain the necessary API key from JCDecaux for data retrieval.
 
 2. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/Soulaimene/Bicycle-Station-Flink-Real-Time.git
-   cd Bicycle-Station-Flink-Real-Time
-   ```
+     ```bash
+     git clone https://github.com/Soulaimene/Bicycle-Station-Flink-Real-Time.git
+     cd Bicycle-Station-Flink-Real-Time
+     ```
 3. **Build Docker Images and Run the Application:**
-   ```bash
-   docker-compose build
-   docker-compose up -d
-   ```
+     ```bash
+     docker-compose build
+     docker-compose up -d
+     ```
 Now all the required technologies are set up in Docker containers, eliminating the need for manual installation on your local machine.
 
 4. **Create Elasticsearch Index:**
-- Run the following command to create the Elasticsearch index:
-  ```
-  python elasticsearch_index.py
-  ```
+  - Run the following command to create the Elasticsearch index:
+    ```
+    python elasticsearch_index.py
+    ```
 
 5. **Run the Kafka Producer:**
-- Start the Kafka producer to fetch data from JCDecaux API:
-  ```
-  python kafka_producer.py --api_key 'your-jcdecaux-api-key'
-  ```
+  - Start the Kafka producer to fetch data from JCDecaux API:
+    ```
+    python kafka_producer.py --api_key 'your-jcdecaux-api-key'
+    ```
 6. **Start PyFlink Consumer:**
    - Run the following command to start the PyFlink consumer and process data from Kafka, sinking it to Elasticsearch:
      ```
      docker-compose exec jobmanager ./bin/flink run -py /opt/pyflink-kafka-stream/fl.py -d
      ```
 7. **Access Kibana Dashboard:**
-- Open your browser and go to `http://localhost:5601` to access the Kibana dashboard.
-- All visualizations are preconfigured and will load automatically.
-
+  - Open your browser and go to `http://localhost:5601` to access the Kibana dashboard.
+  - All visualizations are preconfigured and will load automatically.
+  ![Example Dashboard](./Readme_Images/dashboard.png)
 8. **Stop the Application:**
-- To stop the application and free up resources, run:
-  ```
-  docker-compose down
-  ```
+  - To stop the application and free up resources, run:
+    ```
+    docker-compose down
+    ```
