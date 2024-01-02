@@ -6,8 +6,8 @@
 <div align="center">
   <h4>
     <a href="#Context">Context</a> |
-    <a href="#Technologies and Architecture">Technologies and Architecture</a> |
-    <a href="#Running the Application">Running the Application</a> |
+    <a href="#Technologies-and-Architecture">Technologies and Architecture</a> |
+    <a href="#Running-the-Application">Running the Application</a> |
     <a href="#Live-Demo">Live Demo</a> |
     
 
