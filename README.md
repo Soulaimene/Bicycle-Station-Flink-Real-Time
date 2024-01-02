@@ -78,12 +78,16 @@ Now all the required technologies are set up in Docker containers, eliminating t
   ```
   python kafka_producer.py --api_key 'your-jcdecaux-api-key'
   ```
-  
-6. **Access Kibana Dashboard:**
+6. **Start PyFlink Consumer:**
+   - Run the following command to start the PyFlink consumer and process data from Kafka, sinking it to Elasticsearch:
+     ```
+     docker-compose exec jobmanager ./bin/flink run -py /opt/pyflink-kafka-stream/fl.py -d
+     ```
+7. **Access Kibana Dashboard:**
 - Open your browser and go to `http://localhost:5601` to access the Kibana dashboard.
 - All visualizations are preconfigured and will load automatically.
 
-7. **Stop the Application:**
+8. **Stop the Application:**
 - To stop the application and free up resources, run:
   ```
   docker-compose down
